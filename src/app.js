@@ -52,26 +52,47 @@ const contactsList = [
 ]
 
 // Your code goes here
-function load_all_contacts(contactsList) {
+function load_all_contacts() {
+  clear_view();
+
   for (let i = 0; i < contactsList.length; i++) {
-    add_contact(contactsList[i]["name"])
+    add_contact(contactsList[i]["name"], i);
   }
 }
 
-function add_contact(contact_name) {
-  let contacts_area = document.getElementById('display_all_contacts');
+function add_contact(contact_name, index) {
+  let contacts_area = document.getElementById("display_all_contacts");
 
   let contact_card =
-  `<button onclick="load_single_contact()">
-    <img src="img/${contact_name.toLowerCase()}.png">
+  `<button onclick="load_single_contact(index)">
+    <img src="img/${contact_name[index]["image"]}">
     <p>${contact_name}</p>
-  </button>`
+  </button>`;
 
-  contacts_area.insertAdjacentHTML('beforeend', contact_card)
+  contacts_area.insertAdjacentHTML("afterbegin", contact_card);
 }
 
+function clear_view() {
+  let elements = document.querySelectorAll(".main");
+  elements.forEach(ele => ele.remove());
+}
 
+function load_single_contact(index) {
+  clear_view();
 
-function load_single_contact() {
+  let contact_area = document.getElementById("display_single_contact");
   
+  let html_to_insert = `
+  <div class="container">
+    <img src="img/${contactsList[index]["image"]}">
+    <p>
+      <strong>${contactsList[index]["name"]}</strong>
+      ${contactsList[index]["phone"]}
+      ${contactsList[index]["email"]}
+    </p>
+    <button onclick="load_all_contacts()">icon</button>
+  </div>`;
+
+  contact_area.insertAdjacentHTML("afterbegin", html_to_insert);
 }
+
