@@ -90,9 +90,13 @@ function load_single_contact(index) {
       ${contactsList[index]["phone"]}
       ${contactsList[index]["email"]}
     </p>
-    <span class="fa-thin fa-angle-left" onclick="load_all_contacts()"></span>
+    <span class="fa-thin fa-angle-left" onclick="close_contact()"></span>
   </div>`;
 
   contact_area.insertAdjacentHTML("afterbegin", html_to_insert);
+}
+
+function close_contact() {
+  load_all_contacts();
 }
 
