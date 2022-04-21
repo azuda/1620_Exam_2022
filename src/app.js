@@ -73,7 +73,7 @@ function add_contact(contact_name, index) {
 }
 
 function clear_view() {
-  let elements = document.querySelectorAll(".main");
+  let elements = document.querySelectorAll("main");
   elements.forEach(ele => ele.remove());
 }
 
@@ -90,7 +90,7 @@ function load_single_contact(index) {
       ${contactsList[index]["phone"]}
       ${contactsList[index]["email"]}
     </p>
-    <button onclick="load_all_contacts()">icon</button>
+    <span class="fa-thin fa-angle-left" onclick="load_all_contacts()"></span>
   </div>`;
 
   contact_area.insertAdjacentHTML("afterbegin", html_to_insert);
